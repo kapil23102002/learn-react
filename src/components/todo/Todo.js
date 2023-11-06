@@ -1,17 +1,19 @@
 import React, { useState } from "react";
+import List from "./List";
 
 const Todo = () => {
-  const [inputItem, setInputItem] = useState();
+  const [inputItem, setInputItem] = useState("");
   const [items, setItems] = useState([]);
 
   const inputChange = (e) => {
     setInputItem(e.target.value);
   };
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     setItems((oldItem) => {
       return [...oldItem, inputItem];
     });
+    setInputItem("");
   };
   return (
     <div>
@@ -26,11 +28,8 @@ const Todo = () => {
       </button>
       <div>
         {items.map((item) => {
-          return <li>{item}</li>;
+          return <List item={item} />;
         })}
-        {/* <ol>
-          <li>{inputItem}</li>
-        </ol> */}
       </div>
     </div>
   );
