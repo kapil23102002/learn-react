@@ -1,5 +1,6 @@
 import "./App.css";
 import Clock from "./components/clock/Clock";
+import Form from "./components/form/Form";
 import HandleEvent from "./components/handleEvent/HandleEvent";
 
 function App() {
@@ -8,6 +9,8 @@ function App() {
       <Clock />
       <hr />
       <HandleEvent />
+      <hr />
+      <Form />
     </div>
   );
 }
