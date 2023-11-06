@@ -9,26 +9,39 @@ const Todo = () => {
     setInputItem(e.target.value);
   };
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     setItems((oldItem) => {
       return [...oldItem, inputItem];
     });
     setInputItem("");
   };
+
+  const RemoveItem = (id) => {
+    // console.log("delete");
+    setItems((oldItem) => {
+      return oldItem.filter((arrEle, index) => {
+        return index !== id;
+      });
+    });
+  };
+
   return (
     <div>
       <h1>🛒 ToDo List 🛒</h1>
       <input
         type="text"
         placeholder="Enter your Product Name"
+        value={inputItem}
         onChange={inputChange}
       />
       <button onClick={handleClick} style={{ marginLeft: "8px" }}>
         ➕
       </button>
       <div>
-        {items.map((item) => {
-          return <List item={item} />;
+        {items.map((item, index) => {
+          return (
+            <List item={item} key={index} id={index} RemoveItem={RemoveItem} />
+          );
         })}
       </div>
     </div>
