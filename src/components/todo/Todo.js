@@ -17,7 +17,6 @@ const Todo = () => {
   };
 
   const RemoveItem = (id) => {
-    // console.log("delete");
     setItems((oldItem) => {
       return oldItem.filter((arrEle, index) => {
         return index !== id;
