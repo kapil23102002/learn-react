@@ -1,28 +1,58 @@
 import React, { useState } from "react";
 
 const Form = () => {
-  const [name, setName] = useState("");
-  const [fullName, setFullName] = useState(name);
+  const [fullName, setFullName] = useState({
+    fname: "",
+    lname: "",
+    email: "",
+  });
   const changeHandle = (e) => {
-    const name = e.target.value;
-    setName(name);
+    const { name, value } = e.target;
+    setFullName((preValue) => {
+      return {
+        ...preValue,
+        [name]: value,
+      };
+    });
   };
-  const onSumbit = () => {
-    setFullName(name);
+  const onSumbit = (e) => {
+    // setFullName("");
+    e.preventDefault();
+    alert("fgh");
   };
 
   return (
     <div>
-      <h3>Welcome {fullName}</h3>
-      <input
-        type="text"
-        onChange={changeHandle}
-        placeholder="Enter Your name"
-        value={name}
-      ></input>
-      <button style={{ marginLeft: "8px" }} onClick={onSumbit}>
-        submit
-      </button>
+      <h3>
+        Welcome {fullName.fname} {fullName.lname}{" "}
+      </h3>
+      {fullName.email}
+      <form onSubmit={onSumbit}>
+        <input
+          type="text"
+          onChange={changeHandle}
+          name="fname"
+          placeholder="Enter Your First name"
+          value={fullName.fname}
+        ></input>
+        <input
+          type="text"
+          onChange={changeHandle}
+          placeholder="Enter Your Last name"
+          name="lname"
+          value={fullName.lname}
+        ></input>
+        <input
+          type="email"
+          onChange={changeHandle}
+          placeholder="Enter Your Email"
+          name="email"
+          value={fullName.email}
+        ></input>
+        <button type="submit" style={{ marginLeft: "8px" }}>
+          submit
+        </button>
+      </form>
     </div>
   );
 };
