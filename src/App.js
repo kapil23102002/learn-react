@@ -1,4 +1,5 @@
 import "./App.css";
+import Accordion from "./components/accordion/Accordion";
 import Clock from "./components/clock/Clock";
 import Counter from "./components/counter/Counter";
 import Form from "./components/form/Form";
@@ -17,6 +18,8 @@ function App() {
       <Todo />
       <hr />
       <Counter />
+      <hr />
+      <Accordion />
     </div>
   );
 }
